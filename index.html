@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Hangman</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../hangman/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../hangman/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../hangman/favicon/favicon-16x16.png">
+
+    <link rel="stylesheet" href="../hangman/css/style.css">
+
+    <script src="../hangman/scripts/Word.js" defer></script>
+    <script src="../hangman/scripts/hangman.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Hangman</h1>
+        </header>
+        <main>
+            <div id="game_container">
+                <section id="game_display_box">
+                    <img src="../hangman/images/snoopy1.png" alt="Snoopy1" id="hangman_img">
+                    <div id="letter_display"></div>
+                    <div id="hint"></div>
+                    <div id="status_message"></div>
+                    <button id="new_game_btn">New Game</button>
+                    <div class="keyboard" id="keyboard"></div>
+                </section>
+            </div>
+        </main>
+        <footer>
+            <p> 2026 Carol Zeng </p>
+        </footer>
+    </div>
+</body>
+
+</html>

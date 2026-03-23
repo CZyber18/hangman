@@ -1,0 +1,11 @@
+$primary-color: #9ab1c8;
+$accent-color: #9ba597;
+$secondary-color: #798ca0;
+$light-text-color: #e7f3ff;
+$dark-text-color: #68748a;
+
+footer {
+    background-color: $primary-color;
+    color: $light-text-color;
+    padding: 10px;
+}

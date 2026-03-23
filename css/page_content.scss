@@ -1,0 +1,91 @@
+$primary-color: #9ab1c8;
+$accent-color: #9ba597;
+$secondary-color: #798ca0;
+$light-text-color: #e7f3ff;
+$dark-text-color: #68748a;
+
+img {
+    max-width: 100%;
+    height: auto;
+  
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "handleeregular", 'Verdana', sans-serif;
+    letter-spacing: 3px;
+    padding-left: 15px;
+}
+
+p {
+    padding: 0 15px;
+}
+
+main {
+    flex: 1;
+}
+
+body {
+    margin: 0;
+    font-family: "pt_sansregular", 'Verdana', sans-serif;
+    background-color:$light-text-color;
+    color: $dark-text-color;
+}
+
+button{
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid $secondary-color;
+    background-color: $accent-color;
+    color: $light-text-color;
+    cursor: pointer;
+
+    &:hover{
+        background-color:#e85555;
+    }
+}
+
+.wrapper {
+    max-width: 1000px;
+    min-width: 320px;
+    margin: auto;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.keyboard{
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 5px;
+    max-width: 600px;
+}
+
+
+.keyboard button:disabled{
+    background-color: #8c8c8c;
+    color: rgb(49, 49, 49);
+    cursor: not-allowed;
+}
+
+#game_container{
+    padding:30px;
+    margin: 20px;
+    display: flex;
+}
+
+#game_display_box{
+    align-items: center;
+    padding: 10px;
+}
+
+#new_game_btn{
+    margin: 15px
+}
