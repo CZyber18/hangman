@@ -355,12 +355,7 @@ h6 {
 }
 
 p {
-  font-size: 30px;
-  padding: 0 15px;
-}
-
-div {
-  font-size: 30px;
+  font-size: 18px;
   padding: 0 15px;
 }
 
@@ -381,12 +376,18 @@ button {
   font-weight: bold;
   border-radius: 5px;
   border: 2px solid #798ca0;
-  background-color: #9ba597;
+  background-color: #a8b5a3;
   color: #e7f3ff;
   cursor: pointer;
 }
 button:hover {
   background-color: #e85555;
+}
+
+span, #letter_display {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 .wrapper {
@@ -413,9 +414,9 @@ button:hover {
   max-width: 600px;
 }
 
-.keyboard button:disabled {
-  background-color: #8c8c8c;
-  color: rgb(49, 49, 49);
+.btn_disabled {
+  background-color: #606060;
+  color: rgb(178, 190, 193);
   cursor: not-allowed;
 }
 

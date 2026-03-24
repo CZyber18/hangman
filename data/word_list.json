@@ -28,10 +28,6 @@
         "hint": "A fruit"
     },
     {
-        "word": "Bubble Tea",
-        "hint": "A drink"
-    },
-    {
         "word": "Bear",
         "hint": "An animal"
     },
@@ -40,23 +36,15 @@
         "hint": "An animal"
     },
     {
-        "word": "Border Collie",
-        "hint": "A dog breed"
-    },
-    {
         "word": "Malamute",
         "hint": "A dog breed"
     },
     {
-        "word": "Golden Retriever",
+        "word": "Beagle",
         "hint": "A dog breed"
     },
     {
         "word": "Corgi",
-        "hint": "A dog breed"
-    },
-    {
-        "word": "Australian Shepard",
         "hint": "A dog breed"
     },
     {
@@ -92,7 +80,7 @@
         "hint": "An electronic device"
     },
     {
-        "word": "Mobile Phone",
+        "word": "Cellphone",
         "hint": "A hand held electronic device"
     },
     {
@@ -124,7 +112,7 @@
         "hint": "A activity outside"
     },
     {
-        "word": "Ice cream",
+        "word": "Icecream",
         "hint": "Dessert"
     },
     {
@@ -144,7 +132,7 @@
         "hint": "Dessert"
     },
     {
-        "word": "Creme Brulee",
+        "word": "Caramel",
         "hint": "Dessert"
     },
     {

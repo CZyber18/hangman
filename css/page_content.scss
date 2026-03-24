@@ -1,5 +1,5 @@
 $primary-color: #9ab1c8;
-$accent-color: #9ba597;
+$accent-color: #a8b5a3;
 $secondary-color: #798ca0;
 $light-text-color: #e7f3ff;
 $dark-text-color: #68748a;
@@ -22,7 +22,7 @@ h6 {
 }
 
 p {
-    font-size: 30px;
+    font-size: 18px;
     padding: 0 15px;
 }
 
@@ -52,6 +52,12 @@ button{
     }
 }
 
+span, #letter_display{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
 .wrapper {
     max-width: 1000px;
     min-width: 320px;
@@ -77,9 +83,9 @@ button{
 }
 
 
-.keyboard button:disabled{
-    background-color: #8c8c8c;
-    color: rgb(49, 49, 49);
+.btn_disabled{
+    background-color: #606060;
+    color: rgb(178, 190, 193);
     cursor: not-allowed;
 }
 
@@ -97,3 +103,4 @@ button{
 #new_game_btn{
     margin: 15px
 }
+
