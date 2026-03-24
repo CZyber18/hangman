@@ -355,6 +355,12 @@ h6 {
 }
 
 p {
+  font-size: 30px;
+  padding: 0 15px;
+}
+
+div {
+  font-size: 30px;
   padding: 0 15px;
 }
 

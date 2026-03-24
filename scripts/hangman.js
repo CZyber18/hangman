@@ -58,10 +58,10 @@ function startGame() {
 
     hangman_img.src = `../hangman/images/snoopy${hangman_img_count}.png`;
     var blanks = "";
-    for(let i = 1; i < current_word.getLength; i++){
+    for(let i = 1; i < current_word.getLength(); i++){
         blanks += "_ ";
     }
-    letter_display.innerHTML = blanks;
+    letter_display.innerHTML = `<p>${blanks}</p>`;
 
     hint.innerHTML = `<p> Hint: ${current_word.getHint()}</p>`
 
