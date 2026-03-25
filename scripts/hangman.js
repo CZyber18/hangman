@@ -45,7 +45,7 @@ for (let asciiCode = 65; asciiCode <= 90; asciiCode++) {
 new_game_btn.addEventListener("click", newGame);
 
 function startGame() {
-    random_index = Math.floor(Math.random() * (amount_of_words + 1));
+    random_index = Math.floor(Math.random() * (amount_of_words));
     current_word = new Word(word_bank[random_index].word, word_bank[random_index].hint);
     hangman_img.src = `images/snoopy${incorrect_count}.png`;
     letter_display.innerHTML = `<span>${current_word.getProgress().join(" ")}</span>`;
@@ -72,8 +72,7 @@ function letterClicked(event) {
             letter_display.innerHTML = `<span>${current_word.getProgress().join(" ")}</span>`;
 
             if (current_word.getProgress().includes("_") == false) {
-                console.log("correct");
-                hangman_img.src = `images/snoopy_happy.jpg`;
+                hangman_img.src = `images/snoopy_happy.png`;
                 game_result.innerHTML = "<span id='won'>You Win!</span>";
                 new_game_btn.innerHTML = "Play Again";
             }

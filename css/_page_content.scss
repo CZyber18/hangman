@@ -9,7 +9,7 @@ $dark-text-color: #68748a;
 img {
     max-width: 100%;
     height: auto;
-  
+
 }
 
 h1,
@@ -24,8 +24,9 @@ h6 {
 }
 
 p {
-    font-size: 18px;
-    padding: 0 15px;
+    font-size: 13px;
+    padding: 5px;
+    margin: 5px;
 }
 
 main {
@@ -35,25 +36,26 @@ main {
 body {
     margin: 0;
     font-family: "pt_sansregular", 'Verdana', sans-serif;
-    background-color:$light-text-color;
+    background-color: $light-text-color;
     color: $dark-text-color;
 }
 
-button{
+button {
     padding: 15px;
-    font-size: 15px;
+    font-size: 1rem;
     font-weight: bold;
     @include m.rounded_box(5px, $secondary-color);
     background-color: $accent-color;
     color: $light-text-color;
     cursor: pointer;
 
-    &:hover{
-        background-color:#e85555;
+    &:hover {
+        background-color: #e85555;
     }
 }
 
-span, #letter_display{
+span,
+#letter_display {
     font-size: 25px;
     font-weight: bold;
     margin: 10px 0;
@@ -69,46 +71,53 @@ span, #letter_display{
     flex-direction: column;
 }
 
-.center{
+.center {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.keyboard{
+.keyboard {
     display: grid;
-    grid-template-columns: repeat(13, 1fr);
-    gap: 5px;
-    max-width: 700px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
 }
 
 
-.btn_disabled{
+.btn_disabled {
     background-color: #606060;
     color: rgb(178, 190, 193);
     cursor: not-allowed;
 }
 
-#game_container{
-    padding:30px;
-    margin: 20px;
+#game_container {
+    padding: 20px;
+    margin: 10px;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#game_display_box{
+#game_display_box {
     align-items: center;
+    overflow: hidden;
     padding: 10px;
 }
 
-#new_game_btn{
-    margin: 15px
+#new_game_btn {
+    margin: 10px
 }
 
-#game_over{
+#game_over {
     color: #9b2121;
 }
 
-#won{
+#won {
     color: rgb(18, 140, 18);
 }
+
+#hangman_img {
+    max-width: 90%;
+}
+
