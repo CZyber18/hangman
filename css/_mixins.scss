@@ -1,0 +1,4 @@
+@mixin rounded_box($rounded_corners, $border-color){
+    border-radius: $rounded_corners;
+    border: 2px solid $border-color;
+}

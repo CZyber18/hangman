@@ -8,15 +8,13 @@ const letter_display = document.getElementById("letter_display");
 const hint = document.getElementById("hint");
 const status_message = document.getElementById("status_message");
 const new_game_btn = document.getElementById("new_game_btn");
+const fetch_file_location = "data/word_list.json";
 
 let incorrect_count = 0;
 let word_bank;
 let amount_of_words;
 let current_word;
-let current_word_index;
 let random_index;
-
-const fetch_file_location = "data/word_list.json"; //needs to be relative path needs fixing
 
 fetch(fetch_file_location)
     .then(function (response) {
@@ -35,8 +33,6 @@ fetch(fetch_file_location)
         console.error(error);
     });
 
-
-
 for (let asciiCode = 65; asciiCode <= 90; asciiCode++) {
     const char = String.fromCharCode(asciiCode);
     const btn = document.createElement("button");
@@ -46,23 +42,14 @@ for (let asciiCode = 65; asciiCode <= 90; asciiCode++) {
     keyboard.appendChild(btn);
 }
 
-
+new_game_btn.addEventListener("click", newGame);
 
 function startGame() {
     random_index = Math.floor(Math.random() * (amount_of_words + 1));
     current_word = new Word(word_bank[random_index].word, word_bank[random_index].hint);
-    //
-    console.log(amount_of_words);
-    console.log(current_word);
-    console.log(current_word.getWord());
-    console.log(current_word.getHint());
-    console.log(current_word.getLength());
-    //
-
     hangman_img.src = `images/snoopy${incorrect_count}.png`;
     letter_display.innerHTML = `<span>${current_word.getProgress().join(" ")}</span>`;
     hint.innerHTML = `<p> Hint: ${current_word.getHint()}</p>`
-
 }
 
 function letterClicked(event) {
@@ -83,8 +70,12 @@ function letterClicked(event) {
             }
 
             letter_display.innerHTML = `<span>${current_word.getProgress().join(" ")}</span>`;
-            if(current_word.getProgress().includes("_") === false){
 
+            if (current_word.getProgress().includes("_") == false) {
+                console.log("correct");
+                hangman_img.src = `images/snoopy_happy.jpg`;
+                game_result.innerHTML = "<span id='won'>You Win!</span>";
+                new_game_btn.innerHTML = "Play Again";
             }
 
         }
@@ -94,14 +85,28 @@ function letterClicked(event) {
             status_message.innerHTML = `Incorrect Guesses: ${incorrect_count} / ${max_num_of_guesses}`;
 
             if (incorrect_count == max_num_of_guesses) {
-                game_result.innerHTML = "<span>Game Over!</span>";
+                game_result.innerHTML = "<span id= 'game_over'>Game Over!</span>";
                 letter_display.innerHTML = `The word was: ${current_word.word}`;
                 new_game_btn.innerHTML = "Play Again";
             }
-
         }
-
         current_letter_btn.classList.add("btn_disabled");
     }
+}
+
+
+function newGame() {
+    incorrect_count = 0;
+    game_result.innerHTML = "";
+    new_game_btn.innerHTML = "New Game";
+    status_message.innerHTML = `Incorrect Guesses: ${incorrect_count} / ${max_num_of_guesses}`;
+
+    for (let asciiCode = 65; asciiCode <= 90; asciiCode++) {
+        const char = String.fromCharCode(asciiCode);
+        let current_letter_btn = document.getElementById(`${char}`);
+        current_letter_btn.classList.remove("btn_disabled");
+    }
+
+    startGame();
 
 }

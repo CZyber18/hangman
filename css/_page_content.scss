@@ -1,3 +1,5 @@
+@use "mixins" as m;
+
 $primary-color: #9ab1c8;
 $accent-color: #a8b5a3;
 $secondary-color: #798ca0;
@@ -41,8 +43,7 @@ button{
     padding: 15px;
     font-size: 15px;
     font-weight: bold;
-    border-radius: 5px;
-    border: 2px solid $secondary-color;
+    @include m.rounded_box(5px, $secondary-color);
     background-color: $accent-color;
     color: $light-text-color;
     cursor: pointer;
@@ -79,7 +80,7 @@ span, #letter_display{
     display: grid;
     grid-template-columns: repeat(13, 1fr);
     gap: 5px;
-    max-width: 600px;
+    max-width: 700px;
 }
 
 
@@ -104,3 +105,10 @@ span, #letter_display{
     margin: 15px
 }
 
+#game_over{
+    color: #9b2121;
+}
+
+#won{
+    color: rgb(18, 140, 18);
+}
