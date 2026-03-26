@@ -8,13 +8,15 @@ const letter_display = document.getElementById("letter_display");
 const hint = document.getElementById("hint");
 const status_message = document.getElementById("status_message");
 const new_game_btn = document.getElementById("new_game_btn");
+const animate = document.getElementById("animate");
 const fetch_file_location = "data/word_list.json";
 
 let incorrect_count = 0;
 let word_bank;
-let amount_of_words;
+let amount_of_words = 0;
 let current_word;
 let random_index;
+let imgAnimation;
 
 fetch(fetch_file_location)
     .then(function (response) {
@@ -34,8 +36,8 @@ fetch(fetch_file_location)
     });
 
 for (let asciiCode = 65; asciiCode <= 90; asciiCode++) {
-    const char = String.fromCharCode(asciiCode);
-    const btn = document.createElement("button");
+    let char = String.fromCharCode(asciiCode);
+    let btn = document.createElement("button");
     btn.textContent = char;
     btn.id = `${char}`;
     btn.addEventListener("click", letterClicked);
@@ -84,6 +86,7 @@ function letterClicked(event) {
             status_message.innerHTML = `Incorrect Guesses: ${incorrect_count} / ${max_num_of_guesses}`;
 
             if (incorrect_count == max_num_of_guesses) {
+                imgAnimation = requestAnimationFrame(slide);
                 game_result.innerHTML = "<span id= 'game_over'>Game Over!</span>";
                 letter_display.innerHTML = `The word was: ${current_word.word}`;
                 new_game_btn.innerHTML = "Play Again";
@@ -101,11 +104,25 @@ function newGame() {
     status_message.innerHTML = `Incorrect Guesses: ${incorrect_count} / ${max_num_of_guesses}`;
 
     for (let asciiCode = 65; asciiCode <= 90; asciiCode++) {
-        const char = String.fromCharCode(asciiCode);
+        let char = String.fromCharCode(asciiCode);
         let current_letter_btn = document.getElementById(`${char}`);
         current_letter_btn.classList.remove("btn_disabled");
     }
 
     startGame();
 
+}
+
+
+let top_pos = -75;
+
+function slide() {
+    if (top_pos <= 0) {
+        top_pos++;
+        animate.style.top = top_pos + 'px';
+        imgAnimation = requestAnimationFrame(slide);
+    } else {
+        cancelAnimationFrame(imgAnimation);
+        top_pos = -60;
+    }
 }
