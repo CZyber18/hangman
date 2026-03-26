@@ -11,12 +11,14 @@ const new_game_btn = document.getElementById("new_game_btn");
 const animate = document.getElementById("animate");
 const fetch_file_location = "data/word_list.json";
 
+let game_done = false;
 let incorrect_count = 0;
 let word_bank;
 let amount_of_words = 0;
 let current_word;
 let random_index;
 let imgAnimation;
+let top_pos = -75;
 
 fetch(fetch_file_location)
     .then(function (response) {
@@ -58,7 +60,7 @@ function letterClicked(event) {
     let current_letter = event.target.textContent
     let current_letter_btn = document.getElementById(`${current_letter}`);
 
-    if (!current_letter_btn.classList.contains("btn_disabled") && incorrect_count != max_num_of_guesses) {
+    if (!current_letter_btn.classList.contains("btn_disabled") && incorrect_count != max_num_of_guesses && !game_done) {
         let match_indices = [];
         for (let i = 0; i < current_word.getLength(); i++) {
             if (current_word.getWord()[i].toUpperCase() === current_letter) {
@@ -77,6 +79,7 @@ function letterClicked(event) {
                 hangman_img.src = `images/snoopy_happy.png`;
                 game_result.innerHTML = "<span id='won'>You Win!</span>";
                 new_game_btn.innerHTML = "Play Again";
+                game_done = true;
             }
 
         }
@@ -96,8 +99,8 @@ function letterClicked(event) {
     }
 }
 
-
 function newGame() {
+    game_done = false;
     incorrect_count = 0;
     game_result.innerHTML = "";
     new_game_btn.innerHTML = "New Game";
@@ -108,13 +111,8 @@ function newGame() {
         let current_letter_btn = document.getElementById(`${char}`);
         current_letter_btn.classList.remove("btn_disabled");
     }
-
     startGame();
-
 }
-
-
-let top_pos = -75;
 
 function slide() {
     if (top_pos <= 0) {
