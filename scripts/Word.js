@@ -24,7 +24,7 @@ class Word{
     }
 
     isWordCompleted(){
-        return (!current_word.getProgress().includes("_")) ? true: false;
+        return !current_word.getProgress().includes("_");
     }
 
 }
