@@ -16,7 +16,6 @@ let word_bank;
 let amount_of_words = 0;
 let current_word;
 let random_index;
-let last_word_index;
 let imgAnimation;
 let top_pos = -75;
 
@@ -51,8 +50,8 @@ new_game_btn.addEventListener("click", newGame);
 function startGame() {
     do {
         random_index = Math.floor(Math.random() * (amount_of_words));
-    } while (current_word == word_bank[random_index].word);
-    
+    } while (current_word != undefined && current_word.getWord() == word_bank[random_index].word);
+
     current_word = new Word(word_bank[random_index].word, word_bank[random_index].hint);
 
     hangman_img.src = `images/snoopy${incorrect_count}.png`;
