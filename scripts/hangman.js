@@ -11,12 +11,12 @@ const new_game_btn = document.getElementById("new_game_btn");
 const animate = document.getElementById("animate");
 const fetch_file_location = "data/word_list.json";
 
-let game_done = false;
 let incorrect_count = 0;
 let word_bank;
 let amount_of_words = 0;
 let current_word;
 let random_index;
+let last_word_index;
 let imgAnimation;
 let top_pos = -75;
 
@@ -49,8 +49,12 @@ for (let asciiCode = 65; asciiCode <= 90; asciiCode++) {
 new_game_btn.addEventListener("click", newGame);
 
 function startGame() {
-    random_index = Math.floor(Math.random() * (amount_of_words));
+    do {
+        random_index = Math.floor(Math.random() * (amount_of_words));
+    } while (current_word == word_bank[random_index].word);
+    
     current_word = new Word(word_bank[random_index].word, word_bank[random_index].hint);
+
     hangman_img.src = `images/snoopy${incorrect_count}.png`;
     letter_display.innerHTML = `<span>${current_word.getProgress().join(" ")}</span>`;
     hint.innerHTML = `<p> Hint: ${current_word.getHint()}</p>`
@@ -60,7 +64,7 @@ function letterClicked(event) {
     let current_letter = event.target.textContent
     let current_letter_btn = document.getElementById(`${current_letter}`);
 
-    if (!current_letter_btn.classList.contains("btn_disabled") && incorrect_count != max_num_of_guesses && !game_done) {
+    if (!current_letter_btn.classList.contains("btn_disabled") && incorrect_count != max_num_of_guesses && !current_word.isWordCompleted()) {
         let match_indices = [];
         for (let i = 0; i < current_word.getLength(); i++) {
             if (current_word.getWord()[i].toUpperCase() === current_letter) {
@@ -75,11 +79,10 @@ function letterClicked(event) {
 
             letter_display.innerHTML = `<span>${current_word.getProgress().join(" ")}</span>`;
 
-            if (current_word.getProgress().includes("_") == false) {
+            if (current_word.isWordCompleted()) {
                 hangman_img.src = `images/snoopy_happy.png`;
                 game_result.innerHTML = "<span id='won'>You Win!</span>";
                 new_game_btn.innerHTML = "Play Again";
-                game_done = true;
             }
 
         }
@@ -100,7 +103,6 @@ function letterClicked(event) {
 }
 
 function newGame() {
-    game_done = false;
     incorrect_count = 0;
     game_result.innerHTML = "";
     new_game_btn.innerHTML = "New Game";

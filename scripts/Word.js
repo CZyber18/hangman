@@ -23,4 +23,8 @@ class Word{
         return this.progress;
     }
 
+    isWordCompleted(){
+        return (!current_word.getProgress().includes("_")) ? true: false;
+    }
+
 }
